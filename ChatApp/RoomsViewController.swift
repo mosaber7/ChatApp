@@ -28,12 +28,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    /*  override func viewDidAppear(_ animated: Bool) {
-     if Auth.auth().currentUser == nil{
-     self.presentFormVC()
-     }
-     print(Auth.auth().currentUser)
-     }*/
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Auth.auth().currentUser == nil{
@@ -52,7 +47,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         refrence.child("Room").observe(.childAdded) { (snapshot) in
             if let dataDict = snapshot.value as? [String: Any], let roomName = dataDict["roomName"] as? String{
-                let room = Room(roomName: roomName)
+                let room = Room(roomName: roomName, roomID: snapshot.key)
                 self.rooms.append(room)
                 self.roomsTableView.reloadData()
             }
@@ -68,6 +63,13 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell")!
         cell.textLabel?.text = room.roomName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRoom = rooms[indexPath.row]
+        let chatRoom = self.storyboard?.instantiateViewController(identifier: "ChatRoom") as! ChatRoomViewController
+        chatRoom.room = selectedRoom
+        self.navigationController?.pushViewController(chatRoom, animated: true)
     }
     
     @IBAction func addRoomButtonTapped(_ sender: Any) {

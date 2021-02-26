@@ -260,6 +260,76 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="88.392857142857139"/>
         </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="uQd-dG-0CX">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoom" id="lZY-NK-kOu" customClass="ChatRoomViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IOs-Ql-RiP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-Va-fMx">
+                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghh-Ns-mNP">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="80"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write your message here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QlN-dm-Kk6">
+                                                <rect key="frame" x="10" y="0.0" width="324" height="80"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="QlN-dm-Kk6" firstAttribute="leading" secondItem="ghh-Ns-mNP" secondAttribute="leading" constant="10" id="H8p-1A-W37"/>
+                                            <constraint firstAttribute="bottom" secondItem="QlN-dm-Kk6" secondAttribute="bottom" id="Mp6-UK-ni3"/>
+                                            <constraint firstAttribute="trailing" secondItem="QlN-dm-Kk6" secondAttribute="trailing" constant="10" id="m8T-VX-xM8"/>
+                                            <constraint firstItem="QlN-dm-Kk6" firstAttribute="top" secondItem="ghh-Ns-mNP" secondAttribute="top" id="uGF-1t-BMw"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqO-6n-eCw">
+                                        <rect key="frame" x="344" y="0.0" width="70" height="80"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="Maq-vT-6Yw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="lZY-NK-kOu" eventType="touchUpInside" id="EkL-OD-h8n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <constraints>
+                                    <constraint firstItem="CqO-6n-eCw" firstAttribute="top" secondItem="vWa-Va-fMx" secondAttribute="top" id="CWa-7S-06K"/>
+                                    <constraint firstAttribute="bottom" secondItem="CqO-6n-eCw" secondAttribute="bottom" id="JPK-9w-abz"/>
+                                    <constraint firstItem="CqO-6n-eCw" firstAttribute="leading" secondItem="ghh-Ns-mNP" secondAttribute="trailing" id="M7t-Zr-8la"/>
+                                    <constraint firstAttribute="height" constant="80" id="Pbt-GV-7Ep"/>
+                                    <constraint firstAttribute="trailing" secondItem="CqO-6n-eCw" secondAttribute="trailing" id="eb3-jP-OUz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gag-Sc-3HT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gag-Sc-3HT" firstAttribute="trailing" secondItem="vWa-Va-fMx" secondAttribute="trailing" id="EeU-1b-cja"/>
+                            <constraint firstItem="vWa-Va-fMx" firstAttribute="leading" secondItem="Gag-Sc-3HT" secondAttribute="leading" id="RwG-M4-cDd"/>
+                            <constraint firstAttribute="bottom" secondItem="vWa-Va-fMx" secondAttribute="bottom" id="nN3-kg-abm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="QlN-dm-Kk6" id="lop-MS-0eh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQs-FN-BER" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1983" y="177"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="1Db-pV-lhk">
             <objects>
@@ -283,6 +353,9 @@
         <image name="programmer.png" width="384" height="384"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

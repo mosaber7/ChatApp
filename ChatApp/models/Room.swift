@@ -10,4 +10,5 @@ import Foundation
 
 struct Room {
     var roomName: String
+    var roomID: String?
 }
