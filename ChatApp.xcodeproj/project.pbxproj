@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		051218E125E967DC00A27F82 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051218E025E967DC00A27F82 /* ChatRoomViewController.swift */; };
+		05213E1225EBCD03001CA80E /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05213E1125EBCD03001CA80E /* ChatCell.swift */; };
+		05213E1525EBD185001CA80E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05213E1425EBD185001CA80E /* Message.swift */; };
 		05E99CC725E7D2F000B8A185 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E99CC625E7D2F000B8A185 /* AppDelegate.swift */; };
 		05E99CC925E7D2F000B8A185 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E99CC825E7D2F000B8A185 /* SceneDelegate.swift */; };
 		05E99CCB25E7D2F000B8A185 /* SignInSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E99CCA25E7D2F000B8A185 /* SignInSignUpViewController.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		051218E025E967DC00A27F82 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		05213E1125EBCD03001CA80E /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		05213E1425EBD185001CA80E /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		05E99CC325E7D2F000B8A185 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E99CC625E7D2F000B8A185 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E99CC825E7D2F000B8A185 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 				05E99CD125E7D2F300B8A185 /* LaunchScreen.storyboard */,
 				05E99CD425E7D2F300B8A185 /* Info.plist */,
 				05E99CE025E7F37800B8A185 /* FormCell.swift */,
+				05213E1125EBCD03001CA80E /* ChatCell.swift */,
 				05E99CF825E82D3600B8A185 /* RoomsViewController.swift */,
 				051218E025E967DC00A27F82 /* ChatRoomViewController.swift */,
 			);
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				05E99CFC25E8451300B8A185 /* Room.swift */,
+				05213E1425EBD185001CA80E /* Message.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -242,7 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				051218E125E967DC00A27F82 /* ChatRoomViewController.swift in Sources */,
+				05213E1225EBCD03001CA80E /* ChatCell.swift in Sources */,
 				05E99CCB25E7D2F000B8A185 /* SignInSignUpViewController.swift in Sources */,
+				05213E1525EBD185001CA80E /* Message.swift in Sources */,
 				05E99CE125E7F37800B8A185 /* FormCell.swift in Sources */,
 				05E99CFD25E8451300B8A185 /* Room.swift in Sources */,
 				05E99CF925E82D3600B8A185 /* RoomsViewController.swift in Sources */,

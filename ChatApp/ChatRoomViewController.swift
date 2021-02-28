@@ -8,14 +8,40 @@
 import UIKit
 import Firebase
 
-class ChatRoomViewController: UIViewController {
+class ChatRoomViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
     
     @IBOutlet weak var messageTextField: UITextField!
-    
+    @IBOutlet weak var chatTableView: UITableView!
     var room: Room?
+    var messages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chatTableView.delegate = self
+        chatTableView.dataSource = self
+        title = room?.roomName
+        observeMessages()
+        
+    }
+    
+    func observeMessages(){
+        guard let roomID = room?.roomID else {
+            return
+        }
+        
+        let refrence = Database.database().reference()
+        refrence.child("Room").child(roomID).child("messages").observe(.childAdded) { (snapshot) in
+            if let dataDict = snapshot.value as? [String: Any]{
+                guard let username = dataDict["username"] as? String, let messageText = dataDict["text"] as? String, let senderID = dataDict["senderID"] as? String else {
+                    return
+                }
+                
+                let message = Message.init(messageID: snapshot.key, messageText: messageText, username: username, senderID: senderID)
+                self.messages.append(message)
+                self.chatTableView.reloadData()
+            }
+        }
         
     }
     
@@ -41,11 +67,10 @@ class ChatRoomViewController: UIViewController {
         }
         
         let refrence = Database.database().reference()
-        let user = refrence.child("users").child(userId)
         
         getUserNameByID(userId: userId) { (userName) in
             if let userName = userName, let roomID = self.room?.roomID{
-                let dataDict : [String: Any] = ["username": userName, "text": message]
+                let dataDict : [String: Any] = ["username": userName, "text": message, "senderID": userId]
                 
                 let room = refrence.child("Room").child(roomID)
                 
@@ -61,6 +86,25 @@ class ChatRoomViewController: UIViewController {
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        let cell = chatTableView.dequeueReusableCell(withIdentifier: "ChatCell") as! ChatCell
+        cell.usernameLabl.text = message.username
+        cell.messageLabel.text = message.messageText
+        if message.senderID == Auth.auth().currentUser!.uid{
+            cell.setMessageSource(messageSource: .me)
+        }else{
+            cell.setMessageSource(messageSource: .friend)
+        }
+        
+        return cell
+    }
+    
     
     
     @IBAction func sendButtonTapped(_ sender: Any) {
